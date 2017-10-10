@@ -1,0 +1,24 @@
+<%= form_for @account do |form| %>
+  <% if account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(account.errors.count, "error") %> prohibited this delivery from being saved:</h2>
+
+      <ul>
+      <% account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>
+  <%= form.label :store_city_id %>
+
+  <%= select(:account, :store_city_id, @data.map {|v| [ v['title'], v['id'] ] }) %><p>
+<p>  <%= form.label :pricing_policy %>
+  <%= form.text_field :pricing_policy, class: "form-control" %></p>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
